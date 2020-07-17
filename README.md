@@ -1,4 +1,1 @@
-arch-herbstluftwm-config
-========================
-
-a simple archlinux  herbstluftwm configuration
+# My Dot Files cllection
