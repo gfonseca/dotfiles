@@ -1,0 +1,14 @@
+#! /usr/bin/env python3
+
+import psutil
+
+battery = psutil.sensors_battery()
+plugged = battery.power_plugged
+percent = int(battery.percent)
+
+if battery.power_plugged: 
+  icon = ''
+else:
+  icon = ''
+
+print(icon, percent)

@@ -1,0 +1,15 @@
+#! /usr/bin/env python3
+
+import os
+from datetime import datetime
+
+now = datetime.now()
+
+
+
+if os.environ['BLOCK_INSTANCE'] != '':
+     FORMAT = os.environ['BLOCK_INSTANCE']
+else:
+    FORMAT = "%H:%M:%S %d %B %Y"
+
+print(now.strftime(FORMAT))

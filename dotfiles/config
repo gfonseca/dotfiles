@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font xft:ubuntu mono:pixelsize=18
+#font xft:ubuntu mono:pixelsize=10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Droid Sans Mono 9
+font pango:Droid Mono 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -31,6 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt -e zsh
+#bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -105,8 +106,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -114,7 +113,6 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
@@ -145,6 +143,7 @@ client.unfocused        #333333 #000000 #888888 #292D2E   #111111
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #004466 #004466 #111111 #484E50   #004444
  
+bindsym $mod+r mode "resize"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -170,33 +169,44 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
 bar {
-    font pango:Source Sans Pro-10 10
+    font pango:DejaVu Sans Mono, Awesome 10
+    #font pango:Source Sans Pro-8 8 
     tray_output primary
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     i3bar_command i3bar -t
     position bottom
     separator_symbol "/"
     strip_workspace_numbers yes
-#   Color panel
-    colors {
-        #background #303030
-        #statusline #d0e1d4
-        #separator  #c1d0c1
 
-#                  border  backgr   text
-        focused_workspace   #FF6F54 #FF6F54 #FFF2CE
-        inactive_workspace  #64635f #64635f #a7afa9
+    # Color panel
+    colors {
+        background #151515
+        statusline #d0e1d4
+        separator  #909090
+
+    # Workspaces            border  backgr  text
+        focused_workspace   #C0C0C0 #0088AA #C0C0C0
+        inactive_workspace  #004466 #004466 #111111
         urgent_workspace    #2e394a #2e394a #e7dfd9
        }
 }
 
-bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Media keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && amixer sset Speaker unmute
+bindsym XF86Tools exec --no-startup-id google-chrome --app=https://youtube.com
 
-#exec xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --primary --mode 1366x768 --pos 1920x272 --rotate normal --output HDMI-2 --off
+# Startup
+
+# Load monitor geometry configuration 
+exec xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --primary --mode 1366x768 --pos 1920x272 --rotate normal --output HDMI-2 --off
+
+# Restore wallpaper 
 exec nitrogen --restore
-#exec flameshot
-#exec xrdb ~/.Xresources
+
+# Load linux terminal style configuration
+exec xrdb ~/.Xresources
