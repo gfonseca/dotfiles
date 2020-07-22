@@ -2,7 +2,7 @@
 
 import alsaaudio
 import os
-from utils import translate
+from utils.helpers import translate
 
 MIXERS = []
 ICONS = ['', '', '', '']
