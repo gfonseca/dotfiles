@@ -63,8 +63,8 @@ if __name__ == "__main__":
     
     vol = getVol()
     if getMute():
-        print(ICON_MUTE, vol)
+        print("%s %s" % (ICON_MUTE, vol))
     else:
         i = int(translate(vol, 0, 100, 0, len(ICONS)-1))
         ICON = ICON_MUTE if getMute() else  ICONS[i]
-        print(ICON, vol)
+        print("%s %s" % (ICON, vol))
