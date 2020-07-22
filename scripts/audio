@@ -43,15 +43,15 @@ def getMute():
         return False
 
 if __name__ == "__main__":
-
-    if "BLOCK_INSTANCE" in os.environ:
+    DEFAULT_MIXER = os.getenv("BLOCK_INSTANCE", '')
+    if DEFAULT_MIXER == '':
+        MIXERS.append(alsaaudio.Mixer("Master"))
+    else:
         mixers_names = os.environ['BLOCK_INSTANCE'].split("|")
         for m in mixers_names:
             M1 = alsaaudio.Mixer(m)
             MIXERS.append(M1)
-    else:
-        MIXERS.append(alsaaudio.Mixer("Master"))
-
+    
     BUTTON = os.getenv('BLOCK_BUTTON', default=None)
 
     if BUTTON == '1':
