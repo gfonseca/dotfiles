@@ -1,39 +1,69 @@
-#! /usr/bin/env python3
-import subprocess
-from utils import translate
-import re
+#!/usr/bin/env python3
+
+import alsaaudio
 import os
+from utils import translate
 
-ICONS = ['', '', '']
-ICON_MUTE = ''
+MIXERS = []
+ICONS = ['', '', '', '']
+ICON_MUTE = ''
+VOL_OUT=''
+ICON=ICONS[0]
 
-def setVol(vol):
-    CMD = ['amixer', 'set', 'Master', vol]
-    output = subprocess.Popen( CMD, stdout=subprocess.PIPE ).communicate()
+def decrVolume(v):
+    vol = MIXERS[0].getvolume()[0]
+    n = 0 if vol - v < 0 else vol - v
+    for m in MIXERS:
+        m.setvolume(n)
+
+def incrVolume(v):
+    vol = MIXERS[0].getvolume()[0]
+    n = 100 if vol + v > 100 else vol + v
+    for m in MIXERS:
+        m.setvolume(n)
+
+def getVol():
+    vol = MIXERS[0].getvolume()[0]
+    return vol
+
+def toggle():
+    try:
+        for m in MIXERS:
+            if getMute() == 1:
+                m.setmute(0)
+            else :
+                m.setmute(1)
+    except:
+        decrVolume(100)
+
+def getMute():
+    try:
+        return MIXERS[0].getmute()
+    except:
+        return False
 
 if __name__ == "__main__":
-    if os.environ['BLOCK_BUTTON'] == '4':
-        setVol("5%+")
-    elif os.environ['BLOCK_BUTTON'] == '1':
-        setVol("toggle")
-    elif os.environ['BLOCK_BUTTON'] == '5':
-        setVol("5%-")
 
-    CMD = ['amixer', 'get', 'Master']
-    output = subprocess.Popen( CMD, stdout=subprocess.PIPE ).communicate()
-    audio_data = str(output)
+    if "BLOCK_INSTANCE" in os.environ:
+        mixers_names = os.environ['BLOCK_INSTANCE'].split("|")
+        for m in mixers_names:
+            M1 = alsaaudio.Mixer(m)
+            MIXERS.append(M1)
+    else:
+        MIXERS.append(alsaaudio.Mixer("Master"))
 
-    re_vol_pattern = re.compile("\[(?P<vol>[0-9]{1,3})%\]")
-    vol = int(re_vol_pattern.findall(audio_data)[0])
+    BUTTON = os.getenv('BLOCK_BUTTON', default=None)
 
-    re_state_pattern = re.compile("\[(on|off)\]")
-    state = str(re_state_pattern.findall(audio_data)[0])
+    if BUTTON == '1':
+        toggle()
+    elif BUTTON == '4':
+        incrVolume(5)
+    elif BUTTON == '5':
+        decrVolume(5)
     
-    i = int(translate(vol, 0, 70, 0, 2 ))
-    icon = ICONS[i]
+    vol = getVol()
 
-    if state == "off": 
-        icon = ICONS[0]
-        vol = 'off'
+    i = int(translate(vol, 0, 100, 0, len(ICONS)-1))
+    ICON = ICONS[i]
     
-    print(icon, vol)
+    print(ICON, getVol())
