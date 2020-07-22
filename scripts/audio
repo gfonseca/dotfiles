@@ -29,7 +29,7 @@ def getVol():
 def toggle():
     try:
         for m in MIXERS:
-            if getMute() == 1:
+            if getMute():
                 m.setmute(0)
             else :
                 m.setmute(1)
@@ -38,7 +38,7 @@ def toggle():
 
 def getMute():
     try:
-        return MIXERS[0].getmute()
+        return MIXERS[0].getmute()[0] == 1
     except:
         return False
 
@@ -62,8 +62,9 @@ if __name__ == "__main__":
         decrVolume(5)
     
     vol = getVol()
-
-    i = int(translate(vol, 0, 100, 0, len(ICONS)-1))
-    ICON = ICONS[i]
-    
-    print(ICON, getVol())
+    if getMute():
+        print(ICON_MUTE, vol)
+    else:
+        i = int(translate(vol, 0, 100, 0, len(ICONS)-1))
+        ICON = ICON_MUTE if getMute() else  ICONS[i]
+        print(ICON, vol)
