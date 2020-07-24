@@ -3,9 +3,16 @@
 import subprocess
 import re
 import os
-from utils import translate
+from utils.helpers import translate
+from utils import icons 
 
-ICONS = ['', '', '']
+ICONS = [
+    icons.ICONS.signal0,
+    icons.ICONS.signal1,
+    icons.ICONS.signal2,
+    icons.ICONS.signal3,
+    icons.ICONS.signal4,
+]
 
 cmd = [ 'nmcli', 'device', 'wifi']
 output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
@@ -22,8 +29,7 @@ for n in networks:
     if network_info[0] == "*":
         ssid = network_info[1]
         signal = int(network_info[5])
-        
-        signal_index = int(translate(signal, 0, 100, 0 , len(ICONS) - 1))
+        signal_index = round(translate(signal, 0, 100, 0 , len(ICONS) - 1))
 
         if os.environ['BLOCK_BUTTON'] == '1':
             print(ICONS[signal_index], "strength", signal)

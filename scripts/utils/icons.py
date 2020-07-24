@@ -4,3 +4,8 @@ class ICONS :
     battery2 = ''
     battery3 = ''
     battery4 = ''
+    signal0 = ''
+    signal1 = ''
+    signal2 = ''
+    signal3 = ''
+    signal4 = ''

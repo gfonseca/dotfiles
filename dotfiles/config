@@ -9,6 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+#WIndow title
+for_window [class=".*"] title_format " %title"
+
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -44,10 +48,10 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+ccedilla focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -137,11 +141,20 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # class                 border  bground text    indicator child_border
-client.focused          #0088AA #0088AA #222222 #AAAA88   #0088AA
-client.focused_inactive #004466 #004466 #111111 #484E50   #004466
+client.focused          #AAFF33 #88DD11 #000000 #8800AA   #AAFF33
+client.focused_inactive #448800 #224400 #000000 #484E50   #004466
 client.unfocused        #333333 #000000 #888888 #292D2E   #111111
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #004466 #004466 #111111 #484E50   #004444
+
+# Lock
+bindsym $mod+l exec "i3lock"
+
+# Media keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && amixer sset Speaker unmute
+bindsym XF86Tools exec --no-startup-id google-chrome --app=https://youtube.com
  
 bindsym $mod+r mode "resize"
 
@@ -170,6 +183,12 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+
+# Bar
+
+bindsym $mod+n bar mode toggle
+
+
 bar {
     font pango:DejaVu Sans Mono, Awesome 10
     #font pango:Source Sans Pro-8 8 
@@ -177,7 +196,7 @@ bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     i3bar_command i3bar -t
     position bottom
-    separator_symbol "/"
+    separator_symbol "|"
     strip_workspace_numbers yes
 
     # Color panel
@@ -187,20 +206,14 @@ bar {
         separator  #909090
 
     # Workspaces            border  backgr  text
-        focused_workspace   #C0C0C0 #0088AA #C0C0C0
-        inactive_workspace  #004466 #004466 #111111
+        focused_workspace   #000000 #AAFF33 #000000
+        inactive_workspace  #AAFF33 #000000 #888888
         urgent_workspace    #2e394a #2e394a #e7dfd9
        }
 }
 
 
-# Media keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && amixer sset Speaker unmute
-bindsym XF86Tools exec --no-startup-id google-chrome --app=https://youtube.com
-
-# Startup
+## Startup
 
 # Load monitor geometry configuration 
 exec xrandr --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --primary --mode 1366x768 --pos 1920x272 --rotate normal --output HDMI-2 --off
