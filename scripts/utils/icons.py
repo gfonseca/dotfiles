@@ -9,3 +9,5 @@ class ICONS :
     signal2 = ''
     signal3 = ''
     signal4 = ''
+    play=''
+    pause=''

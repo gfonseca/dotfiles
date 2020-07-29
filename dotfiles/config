@@ -141,7 +141,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # class                 border  bground text    indicator child_border
-client.focused          #AAFF33 #88DD11 #000000 #8800AA   #AAFF33
+client.focused          #33FF33 #88DD11 #000000 #DD3377   #33FF33
 client.focused_inactive #448800 #224400 #000000 #484E50   #004466
 client.unfocused        #333333 #000000 #888888 #292D2E   #111111
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
@@ -195,13 +195,13 @@ bindsym $mod+n bar mode toggle
 
 
 bar {
-    font pango:DejaVu Sans Mono, Awesome 10
+    font pango:DejaVu Sans Mono, Awesome 9
     #font pango:Source Sans Pro-8 8 
     tray_output primary
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     i3bar_command i3bar -t
     position bottom
-    separator_symbol "|"
+    separator_symbol "‏"
     strip_workspace_numbers yes
 
     # Color panel
