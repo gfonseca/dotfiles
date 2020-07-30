@@ -41,6 +41,6 @@ if __name__ == '__main__':
     now = datetime.now()
     second = int(now.strftime("%S"))
     if percent < 10 and (second % 2)  == 0:
-      icon = ' '
+      icon = '  '
 
   print(icon)

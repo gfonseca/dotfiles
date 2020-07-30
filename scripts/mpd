@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from itertools import islice
-from time import strftime, gmtime
+from time import time, strftime, gmtime
 import os
 import math
 import mpd
@@ -33,7 +33,7 @@ def command(button, state, c):
 def formatTime(current_time, total_time):
     show_current_time = strftime("%M:%S", gmtime(int(current_time)))
     show_total_time = strftime("%M:%S", gmtime(int(total_time)))
-    return "-".join((show_current_time, show_total_time))
+    return " ".join((show_current_time, show_total_time))
 
 def access_char(string, i):
     return string[i % len(string)]
@@ -53,14 +53,14 @@ try:
     title, album = currentsong['title'], currentsong['album']
 
     current_time, total_time = status['time'].split(":")
-    time = formatTime(current_time, total_time)
+    time_strig = formatTime(current_time, total_time)
 
     display = makeDisplay(title, album, current_time=current_time)
 except: 
     current_time, total_time = '0', '0'
-    time = formatTime(current_time, total_time)
-    title, album = "stop", 'music '
-    display = makeDisplay(title, album, 13)
+    time_strig = formatTime(current_time, total_time)
+    title, album = "( ( ( ( stop ) ) ) )", ''
+    display = makeDisplay(title, album, int(time()))
 
 command(int(BUTTON), state=status['state'], c=c)
 
@@ -69,4 +69,4 @@ if status['state'] == 'play':
 else:
     icon = ICONS.play
 
-print(icon, display, time)
+print(icon, display, time_strig)
