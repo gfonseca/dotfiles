@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/georgio/.oh-my-zsh"
+export ZSH="/home/georgio.fonseca/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -97,3 +97,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# USER
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completionexport PATH="/home/georgio.fonseca/.yarn/bin:/home/georgio.fonseca/.local/bin:/home/georgio.fonseca/.nvm/versions/node/v13.7.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin:/home/georgio.fonseca/go/bin:/usr/local/go/bin:/usr/local/go/bin:/home/georgio.fonseca/go/bin:/usr/local/go/bin:/home/georgio.fonseca/go/bin"
+
+export PATH="$(yarn global bin):$PATH"
+export PATH=$PATH:/usr/local/go/bin
+export PATH="/home/georgio.fonseca/.local/bin/:$PATH"
+
+alias y="yarn"
+alias ll="ls -halt"
+alias tmux-ksession="tmux ls | grep : | cut -d. -f1 | awk '{print substr(, 0, length()-1)}' | xargs kill"
+alias whatsapp="google-chrome --app=https://web.whatsapp.com"
