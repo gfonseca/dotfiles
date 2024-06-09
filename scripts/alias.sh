@@ -2,6 +2,16 @@
 
 unalias -a
 
+alias shortk='grep -E "#>" $SCRIPTS_PATH/alias.sh | awk -F"#>" "{ sub(/^> /, \"\", \$2); print \$2 }" | sed "s/^[ \t]*//;s/[ \t]*$//"' #> shortk: show aliases
+dotfiles-sync () {
+    (
+        cd $DOTFILES_PATH
+        git add .
+        git commit -m "$1"
+        git push origin master 
+    )
+}
+
 #>  -- GENERAL --
 alias ls="lsd" #> lsd: list folder content
 alias ll="lsd -halt" #> ll: list folder human readable
@@ -72,5 +82,3 @@ if command -v apt-get > /dev/null 2>&1; then
     alias aptc='sudo apt-get autoremove && sudo apt-get autoclean' #> aptc: apt-get autoremove && apt-get autoclean
     alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove && sudo apt-get autoclean' #> update: apt-get update && apt-get upgrade && apt-get autoremove && apt-get autoclean
 fi
-
-alias shortk='grep -E "#>" $SCRIPTS_PATH/alias.sh | awk -F"#>" "{ sub(/^> /, \"\", \$2); print \$2 }" | sed "s/^[ \t]*//;s/[ \t]*$//"' #> shortk: show aliases
