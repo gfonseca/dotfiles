@@ -8,8 +8,8 @@ alias ll="lsd -halt"
 alias kgen="ssh-keygen -t ed25519"
 
 #ZSH
-alias zshconfig="code ~/.zshrc"
-alias szsh='source $HOME/.zshrc'
+alias zshconfig="code $HOME/.zshrc"
+alias szsh="source $HOME/.zshrc"
 
 ## K8S
 if command -v kubectl > /dev/null 2>&1; then
