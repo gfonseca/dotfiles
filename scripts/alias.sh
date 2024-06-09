@@ -73,4 +73,4 @@ if command -v apt-get > /dev/null 2>&1; then
     alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove && sudo apt-get autoclean' #> update: apt-get update && apt-get upgrade && apt-get autoremove && apt-get autoclean
 fi
 
-alias shortk='grep -E "#>" $MYENV_PATH/alias.sh | awk -F"#>" "{ sub(/^> /, \"\", \$2); print \$2 }" | sed "s/^[ \t]*//;s/[ \t]*$//"' #> shortk: show aliases
+alias shortk='grep -E "#>" $SCRIPTS_PATH/alias.sh | awk -F"#>" "{ sub(/^> /, \"\", \$2); print \$2 }" | sed "s/^[ \t]*//;s/[ \t]*$//"' #> shortk: show aliases

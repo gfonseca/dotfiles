@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Bootstrap script to load environment variables from files in ~/.config/myenv
-
+# Bootstrap script to load environment variables from files in $SCRIPTS_PATH/scripts/
 
 # Remove init.sh from initial load (EVADES INFINITE RECURSION)
 local INIT_SCRIPT="init.sh"
-for file in $MYENV_PATH/*; do
+export SCRIPTS_PATH="$DOTFILES_PATH/scripts"
+for file in $SCRIPTS_PATH/*.sh; do
     
     # (EVADES INFINITE RECURSION)
     if [ "$(basename -- "$file")" = $INIT_SCRIPT ]; then
