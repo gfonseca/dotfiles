@@ -1,1 +1,1 @@
-# My Dot Files cllection
+# My Dot Files collection
