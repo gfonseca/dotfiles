@@ -2,8 +2,8 @@
 
 unalias -a
 
-alias shortk='grep -E "#>" $SCRIPTS_PATH/alias.sh | awk -F"#>" "{ sub(/^> /, \"\", \$2); print \$2 }" | sed "s/^[ \t]*//;s/[ \t]*$//"' #> shortk: show aliases
-dotfiles-sync () {
+#> -- DOTFILES --
+dotfiles-sync () { #> dotfiles-sync: commit and push all changers in dotfiles
     (
         cd $DOTFILES_PATH
         git add .
@@ -12,7 +12,8 @@ dotfiles-sync () {
     )
 }
 
-#>  -- GENERAL --
+#> -------------
+#> -- GENERAL --
 alias ls="lsd" #> lsd: list folder content
 alias ll="lsd -halt" #> ll: list folder human readable
 alias kgen="ssh-keygen -t ed25519" #> kgen: generate ssh key pair 
@@ -82,3 +83,5 @@ if command -v apt-get > /dev/null 2>&1; then
     alias aptc='sudo apt-get autoremove && sudo apt-get autoclean' #> aptc: apt-get autoremove && apt-get autoclean
     alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove && sudo apt-get autoclean' #> update: apt-get update && apt-get upgrade && apt-get autoremove && apt-get autoclean
 fi
+
+alias shortk='grep -E "#>" $SCRIPTS_PATH/alias.sh | awk -F"#>" "{ sub(/^> /, \"\", \$2); print \$2 }" | sed "s/^[ \t]*//;s/[ \t]*$//"' #> shortk: show aliases
