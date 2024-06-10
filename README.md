@@ -10,6 +10,5 @@ $ cat <<EOF | $HOME/.zshrc
 export DOTFILES_PATH=$HOME/.config/dotfiles
 source $DOTFILES_PATH/scripts/init.sh
 EOF
-
 $ source $HOME/.zshrc
 ````
