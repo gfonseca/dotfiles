@@ -1,8 +1,0 @@
-#!/usr/bin/env python3
-
-import os
-
-SIZE = os.getenv("BLOCK_INSTANCE", '10')
-SIZE = int(SIZE)
-
-print(' ' * SIZE)
