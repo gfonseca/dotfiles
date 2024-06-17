@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Bootstrap script to load environment variables from files in $SCRIPTS_PATH/scripts/
+if command -v tmux>/dev/null; then
+  [ -z $TMUX ] && exec tmux
+fi
 
+# Bootstrap script to load environment variables from files in $SCRIPTS_PATH/scripts/
 # Remove init.sh from initial load (EVADES INFINITE RECURSION)
 local INIT_SCRIPT="init.sh"
 export SCRIPTS_PATH="$DOTFILES_PATH/scripts"

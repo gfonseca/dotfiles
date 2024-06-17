@@ -63,7 +63,11 @@ if command -v brew > /dev/null 2>&1; then
         brew search $1
     }
 
-    brewi () { #> brewi: brew info
+    brewi () { #> brewi: brew install
+        brew install $1
+    }
+
+    brewn () { #> brewi: brew info
         brew info $1
     }
 
