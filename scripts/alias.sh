@@ -47,13 +47,22 @@ fi
 #> -- DOCKER --
 if command -v docker > /dev/null 2>&1; then
     alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"' #> dps: docker ps
-    alias dcu='docker-compose up -d' #> dcu: docker-compose up
-    alias dcs='docker-compose stop' #> dcs: docker-compose stop
-    alias dcb='docker-compose build' #> dcb: docker-compose build
-    alias dcub='docker-compose up -d --build' #> dcub: docker-compose up --build
-    alias dcr='docker-compose restart' #> dcr: docker-compose restart
-    alias dcd='docker-compose down' #> dcd: docker-compose down
-    alias dcl='docker-compose logs -f' #> dcl: docker-compose logs
+    alias dcu='docker compose up -d' #> dcu: docker-compose up
+    alias dcs='docker compose stop' #> dcs: docker-compose stop
+    alias dcb='docker compose build' #> dcb: docker-compose build
+    alias dcub='docker compose up -d --build' #> dcub: docker-compose up --build
+    alias dcr='docker compose restart' #> dcr: docker-compose restart
+    alias dcd='docker compose down' #> dcd: docker-compose down
+    alias dcl='docker compose logs -f' #> dcl: docker-compose logs
+    
+    _list_containers () {
+        docker ps --format "table {{.Names}}"
+    }
+
+    dca() { #> dca: docker-compose exec
+        docker exec -it $1 bash
+    }
+    complete -o nospace -F _list_containers dca
 fi
 
 #>  ----------------------
