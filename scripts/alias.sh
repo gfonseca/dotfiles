@@ -56,7 +56,7 @@ if command -v docker > /dev/null 2>&1; then
     alias dcl='docker compose logs -f' #> dcl: docker-compose logs
     
     _list_containers () {
-        docker ps --format "table {{.Names}}"
+        docker ps --format "table {{.Names}}" | grep -v NAMES
     }
 
     dca() { #> dca: docker-compose exec
@@ -81,7 +81,7 @@ if command -v brew > /dev/null 2>&1; then
     }
 
     alias brewc='brew cleanup' #> brewc: brew cleanup
-    alias update='brew update && brew upgrade && brew cleanup' #> update: brew update && brew upgrade && brew cleanup
+    alias update='brew update && brew upgrade && brew cleanup' #> update: update brew packages
 fi
 
 if command -v apt-get > /dev/null 2>&1; then
