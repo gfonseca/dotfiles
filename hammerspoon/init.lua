@@ -40,3 +40,10 @@ hs.hotkey.bind({'cmd'}, "[", function ()
   hs.application.launchOrFocus(APP_NAME)
 end)
 
+
+-- Go to Arc
+hs.hotkey.bind({'cmd'}, "]", function ()
+  APP_NAME = 'Arc'
+  hs.application.launchOrFocus(APP_NAME)
+end)
+
