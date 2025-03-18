@@ -41,6 +41,7 @@ if command -v git > /dev/null 2>&1; then
     alias gl='git log' #> gl: git log
     alias gs='git push' #> gs: git push
     alias gc='git commit' #> gc: git commit
+    alias gsw='git switch -' #> gsw: git switch -
 fi
 
 #>  -----------
