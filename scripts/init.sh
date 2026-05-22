@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if command -v tmux>/dev/null; then
-  [ -z $TMUX ] && exec tmux
+if [[ -o interactive ]] && [[ -t 0 ]] && command -v tmux>/dev/null; then
+  [ -z $TMUX ] && exec tmux new-session -A -s main
 fi
 
 # Bootstrap script to load environment variables from files in $SCRIPTS_PATH/scripts/

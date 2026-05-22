@@ -19,12 +19,13 @@
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
 [window]
-
+decorations = "None"
+startup_mode = "Windowed"
 opacity = 0.95
 
-padding.x = 10
-padding.y = 10
-startup_mode = "Maximized"
+[window.position]
+x = 0
+y = 0
 decorations_theme_variant = "Dark" # "Dark"
 
 [colors]
@@ -48,7 +49,6 @@ size = 20.0
 
 [keyboard]
 bindings = [
-{ key = "PageUp", mods = "Control", action = "ScrollPageUp" },
-{ key = "PageDown", mods = "Control", action = "ScrollPageDown" },
-
+    { key = "PageUp", mods = "Control", action = "ScrollPageUp" },
+    { key = "PageDown", mods = "Control", action = "ScrollPageDown" },
 ]
