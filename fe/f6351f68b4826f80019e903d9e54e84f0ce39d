@@ -1,0 +1,21 @@
+tmux/tmux.conf
+  s_c8c32da0717ebf::t_a440c509702a34 1-59
+scripts/init.sh
+  s_c8c32da0717ebf::t_e400556a8249d8 7-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "fef6351f68b4826f80019e903d9e54e84f0ce39d",
+  "prompts": {},
+  "sessions": {
+    "s_c8c32da0717ebf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d8c978e-faa1-4033-a9a2-2f18831f81a2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Georgio Barbosa da Fonseca <georgio.fonseca@mercadolivre.com>"
+    }
+  }
+}
