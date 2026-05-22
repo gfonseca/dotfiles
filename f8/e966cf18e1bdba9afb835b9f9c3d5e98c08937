@@ -1,0 +1,20 @@
+hammerspoon/init.lua
+  s_939ef6adc086f5::t_7f3aef0a294950 30,32-37,40-42,44-46,53-60
+  s_939ef6adc086f5::t_86dce3cc05a8f8 31,38,43,47-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "f8e966cf18e1bdba9afb835b9f9c3d5e98c08937",
+  "prompts": {},
+  "sessions": {
+    "s_939ef6adc086f5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "80273bbd-4e0e-45ba-afa7-09ec3b05e5ed",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Georgio Barbosa da Fonseca <georgio.fonseca@mercadolivre.com>"
+    }
+  }
+}
