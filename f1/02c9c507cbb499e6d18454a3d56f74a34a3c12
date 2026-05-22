@@ -1,0 +1,35 @@
+tmux/tmux.conf
+  s_662a6615381b69::t_c7a7db152b9ea3 45,59-70
+  s_79a5aa931767b8::t_db207db4bfb4a1 71-75
+  s_662a6615381b69::t_360a41d7bf78f1 14-15
+tmux/claude-alert.sh
+  s_662a6615381b69::t_88c56110db2e34 1-7
+  s_662a6615381b69::t_63fe9c00ba3a71 8-9,11,14
+  s_662a6615381b69::t_7c7f615cada0bc 10
+  s_662a6615381b69::t_841576a6252bfa 12-13
+  s_662a6615381b69::t_52f9d11da64ed4 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "f102c9c507cbb499e6d18454a3d56f74a34a3c12",
+  "prompts": {},
+  "sessions": {
+    "s_662a6615381b69": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f834089b-4953-4369-8833-538060846525",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Georgio Barbosa da Fonseca <georgio.fonseca@mercadolivre.com>"
+    },
+    "s_79a5aa931767b8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfe9ecb8-6b23-48c3-a5ac-0bb3ed551985",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Georgio Barbosa da Fonseca <georgio.fonseca@mercadolivre.com>"
+    }
+  }
+}
